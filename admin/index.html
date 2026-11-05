@@ -307,8 +307,9 @@ function generateLink() {
   };
 
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
-  // The signing page (sign.html) must be in the same folder on GitHub Pages
-  const base = window.location.href.replace(/admin\.html.*$/, 'sign.html');
+  // Admin lives at .../admin/  -> signing page lives at .../sign/
+  const root = window.location.href.split('?')[0].replace(/(admin\/?(index\.html)?|admin\.html)$/, '');
+  const base = root + 'sign/';
   const url  = `${base}?d=${encoded}`;
 
   document.getElementById('resultName').textContent = `Agreement for ${name}`;
