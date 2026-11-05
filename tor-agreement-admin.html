@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOR — New Client Agreement</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{--coral:#FF7B5F;--coral2:#e8614a;--navy:#26447D;--navy2:#1a2f5e;--cream:#FDF5ED}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(150deg,#080f22 0%,#0d1e40 60%,#0a1830 100%);min-height:100vh;padding:48px 20px 60px;position:relative;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(255,123,95,.14) 0%,transparent 70%);top:-200px;right:-200px}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,132,221,.1) 0%,transparent 70%);bottom:-150px;left:-150px}
+
+.wrap{max-width:720px;margin:0 auto;position:relative;z-index:1}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes borderGlow{0%,100%{border-color:rgba(255,123,95,.3)}50%{border-color:rgba(255,123,95,.7)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,123,95,0)}50%{box-shadow:0 0 0 12px rgba(255,123,95,0)}}
+
+.header{text-align:center;margin-bottom:40px;animation:fadeUp .8s ease both}
+.logo-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,123,95,.12);border:1px solid rgba(255,123,95,.3);color:#ffbfb0;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 18px;border-radius:100px;margin-bottom:20px;animation:borderGlow 3s ease-in-out infinite}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 8px var(--coral);animation:pulse 2s ease-in-out infinite}
+h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,38px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:10px}
+h1 em{font-style:italic;background:linear-gradient(135deg,var(--coral),#ffaa8a,var(--coral));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
+.header-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:32px;margin-bottom:16px;backdrop-filter:blur(12px);animation:fadeUp .8s ease both;transition:border-color .3s}
+.card:hover{border-color:rgba(255,255,255,.18)}
+.card.d1{animation-delay:.08s}.card.d2{animation-delay:.16s}.card.d3{animation-delay:.24s}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.card-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(255,123,95,.25),rgba(255,123,95,.08));border:1px solid rgba(255,123,95,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.group:last-child{margin-bottom:0}
+label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+input,select,textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:13px 16px;font-size:14px;font-family:'Poppins',sans-serif;color:#fff;outline:none;width:100%;transition:border-color .25s,background .25s,box-shadow .25s;-webkit-appearance:none}
+input::placeholder{color:rgba(255,255,255,.22)}
+input:focus,select:focus,textarea:focus{border-color:var(--coral);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(255,123,95,.15)}
+select{cursor:pointer}
+select option{background:#1a2f5e;color:#fff}
+textarea{resize:vertical;min-height:60px}
+input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.5) sepia(1) saturate(2) hue-rotate(310deg);cursor:pointer}
+
+/* SESSIONS */
+.session-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;margin-bottom:12px;position:relative;transition:border-color .2s}
+.session-item:hover{border-color:rgba(255,123,95,.2)}
+.session-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.session-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--coral2));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(255,123,95,.4)}
+.btn-remove{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:14px;width:28px;height:28px;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.btn-remove:hover{background:rgba(220,80,60,.2);border-color:rgba(220,80,60,.4);color:#ff8080}
+.session-grid{display:grid;grid-template-columns:140px 1fr;gap:12px}
+@media(max-width:480px){.session-grid{grid-template-columns:1fr}}
+.session-work{grid-column:1/-1}
+
+.btn-add{display:flex;align-items:center;gap:8px;background:rgba(255,123,95,.08);border:1.5px dashed rgba(255,123,95,.3);color:var(--coral);font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;padding:12px 20px;border-radius:12px;cursor:pointer;transition:all .2s;width:100%;justify-content:center;margin-top:4px}
+.btn-add:hover{background:rgba(255,123,95,.15);border-color:rgba(255,123,95,.5)}
+
+/* PRICING */
+.price-box{background:linear-gradient(135deg,rgba(255,123,95,.1),rgba(255,123,95,.04));border:1px solid rgba(255,123,95,.2);border-radius:16px;padding:20px;margin-top:16px}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:14px;color:rgba(255,255,255,.6)}
+.price-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,.06)}
+.price-row strong{color:#fff;font-weight:600}
+.price-total{font-size:15px;font-weight:700;color:#fff}
+.price-total strong{color:var(--coral);font-size:22px}
+
+/* GENERATE BTN */
+.generate-wrap{position:relative;margin-top:8px;animation:fadeUp .8s ease both .32s}
+.glow-ring{position:absolute;inset:-8px;border-radius:100px;border:2px solid rgba(255,123,95,.4);animation:pulseRing 2s ease-out infinite;pointer-events:none}
+.glow-ring2{animation-delay:.5s}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.04);opacity:0}}
+.generate-btn{width:100%;background:linear-gradient(135deg,var(--coral) 0%,var(--coral2) 100%);color:#fff;font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;border:none;border-radius:100px;padding:20px 32px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 32px rgba(255,123,95,.5),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
+.generate-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 50%);pointer-events:none}
+.generate-btn:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(255,123,95,.65),inset 0 1px 0 rgba(255,255,255,.2)}
+.generate-btn:active{transform:none}
+.generate-btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* RESULT */
+#result{display:none;margin-top:20px;animation:fadeUp .6s ease both}
+.result-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:36px;text-align:center;backdrop-filter:blur(12px)}
+.result-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+.result-name{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:6px}
+.result-sub{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:24px}
+.link-box{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;font-size:12px;color:rgba(255,255,255,.65);word-break:break-all;text-align:left;margin-bottom:20px;font-family:monospace;line-height:1.5}
+.action-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-copy{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--coral),var(--coral2));color:#fff;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(255,123,95,.45);transition:transform .2s,box-shadow .2s}
+.btn-copy:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,123,95,.6)}
+.btn-open{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.8);font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .2s}
+.btn-open:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.12);color:#25d366;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;border:1px solid rgba(37,211,102,.3);cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-wa:hover{background:rgba(37,211,102,.2);border-color:rgba(37,211,102,.5)}
+.copy-confirm{font-size:12px;color:#5dcf7a;margin-top:12px;display:none;font-weight:500}
+
+.footer-note{text-align:center;font-size:11px;color:rgba(255,255,255,.2);margin-top:28px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="wrap">
+  <div class="header">
+    <div class="logo-badge"><span class="badge-dot"></span>Internal Use Only</div>
+    <h1>New Client <em>Agreement</em></h1>
+    <p class="header-sub">Fill in the client details to generate their personalized signing link</p>
+  </div>
+
+  <!-- CLIENT INFO -->
+  <div class="card d1">
+    <div class="card-header">
+      <div class="card-icon">👤</div>
+      <span class="card-title">Client Information</span>
+    </div>
+    <div class="row">
+      <div class="group">
+        <label>Full name *</label>
+        <input type="text" id="clientName" placeholder="Jane Smith" required>
+      </div>
+      <div class="group">
+        <label>Email address *</label>
+        <input type="email" id="clientEmail" placeholder="jane@email.com" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="group">
+        <label>Phone</label>
+        <input type="tel" id="clientPhone" placeholder="(720) 555-0100">
+      </div>
+      <div class="group">
+        <label>Service address</label>
+        <input type="text" id="clientAddress" placeholder="1234 Main St., Denver, CO 80202">
+      </div>
+    </div>
+    <div class="group">
+      <label>Proposal reference</label>
+      <input type="text" id="proposalRef" placeholder="e.g. November 4, 2026 — proposal accepted by the Client">
+    </div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="card d2">
+    <div class="card-header">
+      <div class="card-icon">📅</div>
+      <span class="card-title">Session Plan</span>
+    </div>
+    <div id="sessionsWrap"></div>
+    <button class="btn-add" type="button" onclick="addSession()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add another session
+    </button>
+  </div>
+
+  <!-- INVESTMENT -->
+  <div class="card d3">
+    <div class="card-header">
+      <div class="card-icon">💰</div>
+      <span class="card-title">Investment & Payment</span>
+    </div>
+    <div class="row">
+      <div class="group">
+        <label>Organizers per session</label>
+        <select id="numOrganizers" onchange="updatePricing()">
+          <option value="1">1 professional organizer</option>
+          <option value="2" selected>2 professional organizers</option>
+        </select>
+      </div>
+      <div class="group">
+        <label>Price per session ($)</label>
+        <input type="number" id="pricePerSession" value="800" min="0" oninput="updatePricing()">
+      </div>
+    </div>
+    <div class="price-box" id="priceDisplay"></div>
+  </div>
+
+  <!-- GENERATE -->
+  <div class="generate-wrap">
+    <div class="glow-ring"></div>
+    <div class="glow-ring glow-ring2"></div>
+    <button class="generate-btn" onclick="generateLink()">
+      Generate client signing link →
+    </button>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result">
+    <div class="result-card">
+      <p class="result-label">Link ready to send</p>
+      <p class="result-name" id="resultName"></p>
+      <p class="result-sub">Send this link via WhatsApp or email — the client signs directly from their phone</p>
+      <div class="link-box" id="linkBox"></div>
+      <div class="action-btns">
+        <button class="btn-copy" onclick="copyLink()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy link
+        </button>
+        <a class="btn-wa" id="waBtn" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send via WhatsApp
+        </a>
+        <button class="btn-open" onclick="openLink()">
+          Preview
+        </button>
+      </div>
+      <p class="copy-confirm" id="copyConfirm">Copied to clipboard!</p>
+    </div>
+  </div>
+
+  <p class="footer-note">Internal use only · The Organizing Recipe LLC · info@theorganizingrecipe.com</p>
+</div>
+
+<script>
+let sessions = [];
+
+function addSession(date='', space='', work='') {
+  const id = Date.now() + Math.random();
+  sessions.push({id, date, space, work});
+  renderSessions();
+  updatePricing();
+}
+
+function removeSession(id) {
+  sessions = sessions.filter(s => s.id !== id);
+  renderSessions();
+  updatePricing();
+}
+
+function updateSession(id, field, value) {
+  const s = sessions.find(s => s.id === id);
+  if (s) s[field] = value;
+  updatePricing();
+}
+
+function renderSessions() {
+  const wrap = document.getElementById('sessionsWrap');
+  if (sessions.length === 0) { wrap.innerHTML = ''; return; }
+  wrap.innerHTML = sessions.map((s, i) => `
+    <div class="session-item">
+      <div class="session-header">
+        <div class="session-num">${i+1}</div>
+        <button class="btn-remove" onclick="removeSession(${s.id})" title="Remove session">×</button>
+      </div>
+      <div class="session-grid">
+        <div class="group" style="margin-bottom:0">
+          <label>Date</label>
+          <input type="date" value="${s.date}" oninput="updateSession(${s.id},'date',this.value)">
+        </div>
+        <div class="group" style="margin-bottom:0">
+          <label>Space</label>
+          <input type="text" value="${s.space}" placeholder="e.g. Kitchen, Closet" oninput="updateSession(${s.id},'space',this.value)">
+        </div>
+        <div class="group session-work" style="margin-bottom:0">
+          <label>What you'll do together</label>
+          <input type="text" value="${s.work}" placeholder="e.g. Declutter, categorize, and label your closet" oninput="updateSession(${s.id},'work',this.value)">
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function updatePricing() {
+  const n = sessions.length || 0;
+  const price = parseFloat(document.getElementById('pricePerSession').value) || 0;
+  const org = parseInt(document.getElementById('numOrganizers').value) || 1;
+  const total = n * price;
+  const deposit = total * 0.5;
+  const balance = total - deposit;
+  const fmt = v => '$' + v.toLocaleString('en-US', {minimumFractionDigits:2});
+  document.getElementById('priceDisplay').innerHTML = `
+    <div class="price-row">
+      <span>${n} session${n!==1?'s':''} × ${fmt(price)} (${org} organizer${org!==1?'s':''})</span>
+      <strong>${fmt(total)}</strong>
+    </div>
+    <div class="price-row">
+      <span>Deposit to book your dates (50%)</span>
+      <strong>${fmt(deposit)}</strong>
+    </div>
+    <div class="price-row price-total">
+      <span>Balance due at end of project</span>
+      <strong>${fmt(balance)}</strong>
+    </div>`;
+}
+
+function generateLink() {
+  const name    = document.getElementById('clientName').value.trim();
+  const email   = document.getElementById('clientEmail').value.trim();
+  const phone   = document.getElementById('clientPhone').value.trim();
+  const address = document.getElementById('clientAddress').value.trim();
+  const ref     = document.getElementById('proposalRef').value.trim();
+  const price   = parseFloat(document.getElementById('pricePerSession').value) || 0;
+  const org     = parseInt(document.getElementById('numOrganizers').value) || 1;
+
+  if (!name || !email) { alert('Client name and email are required.'); return; }
+  if (sessions.length === 0) { alert('Add at least one session before generating the link.'); return; }
+
+  const data = {
+    n: name, e: email, p: phone, a: address, r: ref,
+    pr: price, org: org,
+    s: sessions.map(s => ({ d: s.date, sp: s.space, w: s.work }))
+  };
+
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  // The signing page (sign.html) must be in the same folder on GitHub Pages
+  const base = window.location.href.replace(/admin\.html.*$/, 'sign.html');
+  const url  = `${base}?d=${encoded}`;
+
+  document.getElementById('resultName').textContent = `Agreement for ${name}`;
+  document.getElementById('linkBox').textContent = url;
+
+  const waMsg = encodeURIComponent(
+    `Hi ${name.split(' ')[0]}! 👋\n\nHere's your personalized service agreement from The Organizing Recipe. Please take a moment to review it and sign digitally — it only takes a minute!\n\n${url}\n\nFeel free to reply here if you have any questions. Looking forward to transforming your space! 🏠✨\n\n— Lorena, The Organizing Recipe`
+  );
+  document.getElementById('waBtn').href = `https://wa.me/?text=${waMsg}`;
+
+  document.getElementById('result').style.display = 'block';
+  setTimeout(() => document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'}), 100);
+  window._generatedUrl = url;
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window._generatedUrl).then(() => {
+    const c = document.getElementById('copyConfirm');
+    c.style.display = 'block';
+    setTimeout(() => c.style.display = 'none', 2500);
+  });
+}
+
+function openLink() { window.open(window._generatedUrl, '_blank'); }
+
+// Init
+addSession();
+updatePricing();
+</script>
+</body>
+</html>
